@@ -58,11 +58,16 @@ sample3_size = os.path.getsize("examples/sample3.xlsx")
 
 def test_check_files_in_archive():
     rez = move_files_into_archive()
-    assert cities_size == rez[0], f"Размер файла в архиве не совпадает с тем, что был до архивирования"
-    assert sample_size == rez[2], f"Размер файла в архиве не совпадает с тем, что был до архивирования"
-    assert sample3_size == rez[4], f"Размер файла в архиве не совпадает с тем, что был до архивирования"
-    assert check_row_num_in_csv() == rez[5], f"Количество строк csv файла в архиве не совпадает с изначальным кол-вом"
-    assert check_page_num_in_pdf() == rez[1], f"Количество страниц pdf файла в архиве не совпадает с изначальным кол-вом"
-    assert check_row_num_in_xlsx() == rez[3], f"Количество строк на активном листе файла xlsx в архиве не совпадает с изначальным кол-вом"
+    cities_size_in_archive = rez[0]
+    pdf_numpages_in_archive = rez[1]
+    sample_size_in_archive = rez[2]
+    xsls_rows_in_archive = rez[3]
+    sample3_size_in_archive = rez[4]
+    csv_rows_in_archive = rez[5]
 
-
+    assert cities_size == cities_size_in_archive, f"Размер файла в архиве не совпадает с тем, что был до архивирования"
+    assert sample_size == sample_size_in_archive, f"Размер файла в архиве не совпадает с тем, что был до архивирования"
+    assert sample3_size == sample3_size_in_archive, f"Размер файла в архиве не совпадает с тем, что был до архивирования"
+    assert check_row_num_in_csv() == csv_rows_in_archive, f"Количество строк csv файла в архиве не совпадает с изначальным кол-вом"
+    assert check_page_num_in_pdf() == pdf_numpages_in_archive, f"Количество страниц pdf файла в архиве не совпадает с изначальным кол-вом"
+    assert check_row_num_in_xlsx() == xsls_rows_in_archive, f"Количество строк на активном листе файла xlsx в архиве не совпадает с изначальным кол-вом"
